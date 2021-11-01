@@ -15,7 +15,7 @@ class Main {
     for(int i=0; i<coin.length; i++) {
         System.out.println(coin[i] + "원 갯수: " + pay / coin[i]);
         coinCnt += pay / coin[i];
-        pay = pay - ((pay / coin[i]) * coin[i]);
+        pay -= ((pay / coin[i]) * coin[i]);
         System.out.println("남은돈(원): " + pay);
         System.out.println();
     }
