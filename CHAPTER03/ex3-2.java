@@ -35,11 +35,12 @@ class Main {
     
     
     /* 이에 대한 과정을 더 최적화 시켜서 코드화를 하면... */
-    int cntFirst = K * (M / (K + 1)); // 최대값 카운팅
-    int cntSec = M - cntFirst; // 두번째 최대값 카운팅
+    //M = (K + 1) * (M / (K + 1)) + (M % (K + 1)); // M이 나오기 위한 공식
+    int cSec = M / (K + 1); // 두 번째로 큰 배열의 최대값
+    int cFst = M - cSec; // 배열의 최대값
 
-    int result = (cntFirst * arr[N-1]) + (cntSec * arr[N-2]); // 결과값
+    int result = (cFst * arr[N-1]) + (cSec * arr[N-2]); // 결과값
 
-    System.out.println(result); // 결과값 출력
+    System.out.println(result);
   }  
 }
