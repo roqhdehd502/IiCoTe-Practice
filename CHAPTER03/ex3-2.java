@@ -27,5 +27,19 @@ class Main {
     }
 
     System.out.println(temp); // 누적값 출력
+    
+    
+    
+    
+    
+    
+    
+    /* 이에 대한 과정을 더 최적화 시켜서 코드화를 하면... */
+    int cntFirst = K * (M / (K + 1)); // 최대값 카운팅
+    int cntSec = M - cntFirst; // 두번째 최대값 카운팅
+
+    int result = (cntFirst * arr[N-1]) + (cntSec * arr[N-2]); // 결과값
+
+    System.out.println(result); // 결과값 출력
   }  
 }
