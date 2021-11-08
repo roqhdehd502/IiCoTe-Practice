@@ -6,7 +6,7 @@ class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
-    int N = 5; // 공간의 크기
+    int N = 7; // 공간의 크기
     int coordinate[] = {1, 1}; // 좌표
 
     System.out.println("L, R, U, D를 띄어 써서 입력");
@@ -33,9 +33,6 @@ class Main {
       } else if(coordinate[1] < 1) {
         coordinate[1] = 1;
       }
-
-      System.out.println("x축: " + coordinate[1]);
-      System.out.println("y축: " + coordinate[0]);
     }
 
     System.out.println(coordinate[0] + " " + coordinate[1]);
