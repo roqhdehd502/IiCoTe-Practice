@@ -14,13 +14,13 @@ class Main {
     String[] newStr = direction.split("\\s+"); // 공백을 기준으로 나눠서 문자를 배열에 담기
 
     for(int i = 0; i<newStr.length; i++) {
-      if(newStr[i].equals("L") && coordinate[1] > 1) {
+      if(newStr[i].equals("L") && coordinate[1] > 1) { // 왼쪽이거나 1미만이 아닐때만 감소
         coordinate[1]--;
-      } else if(newStr[i].equals("R") && coordinate[1] < N) {
+      } else if(newStr[i].equals("R") && coordinate[1] < N) { // 오른쪽이거나 N초과가 아닐때만 감소
         coordinate[1]++;
-      } else if(newStr[i].equals("U") && coordinate[0] > 1) {
+      } else if(newStr[i].equals("U") && coordinate[0] > 1) { // 위쪽이거나 1미만이 아닐때만 감소
         coordinate[0]--;
-      } else if(newStr[i].equals("D") && coordinate[0] < N) {
+      } else if(newStr[i].equals("D") && coordinate[0] < N) { // 아래쪽이거나 N초과가 아닐때만 감소
         coordinate[0]++;
       } else {
         continue;
