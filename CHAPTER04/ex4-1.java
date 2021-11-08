@@ -14,29 +14,20 @@ class Main {
     String[] newStr = direction.split("\\s+"); // 공백을 기준으로 나눠서 문자를 배열에 담기
 
     for(int i = 0; i<newStr.length; i++) {
-      if(newStr[i].equals("L")) {
+      if(newStr[i].equals("L") && coordinate[1] > 1) {
         coordinate[1]--;
-      } else if(newStr[i].equals("R")) {
+      } else if(newStr[i].equals("R") && coordinate[1] < N) {
         coordinate[1]++;
-      } else if(newStr[i].equals("U")) {
+      } else if(newStr[i].equals("U") && coordinate[0] > 1) {
         coordinate[0]--;
-      } else if(newStr[i].equals("D")) {
+      } else if(newStr[i].equals("D") && coordinate[0] < N) {
         coordinate[0]++;
-      }
-
-      if (coordinate[0] > N) { // 크기가 N을 벗어나도 무시한다
-        coordinate[0] = N;
-      } else if(coordinate[1] > N) {
-        coordinate[1] = N;
-      } else if(coordinate[0] < 1) {  // 크기가 1미만이어도 무시한다
-        coordinate[0] = 1;
-      } else if(coordinate[1] < 1) {
-        coordinate[1] = 1;
+      } else {
+        continue;
       }
     }
 
     System.out.println(coordinate[0] + " " + coordinate[1]);
-
     sc.close();
   }
 }
