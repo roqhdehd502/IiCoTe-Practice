@@ -24,7 +24,7 @@ class Main {
 	
 	for(int i=0; i<=N; i++) {
 	    if(i == 3 || i == 13 || i == 23 ) { temp += 3600; }
-	    temp += 225;
+	    temp += 1575;
 	}
 	
 	System.out.println(temp);
