@@ -19,30 +19,14 @@
 
 class Main {
     public static void main(String[] args) {
-		int N = 5; // 시간 입력(단, 1 <= N <= 23)
-		int cnt = 0; // 3이 들어가는 숫자 카운트
-
-		for(int i=0; i<=N; i++) { // 시
-			for(int j=0; j<=59; j++) { // 분
-				for(int k=0; k<=59; k++) { // 초
-					if(k == 3 || k == 13 || k == 23 
-                                            || (k >= 30 && k <= 39) || k == 43 || k == 53) {
-						cnt++;
-					}
-				}
-
-				if(j == 3 || j == 13 
-					|| j == 23 || (j >= 30 && j <= 39)
-					|| j == 43 || j == 53) {
-					cnt++;
-				}
-			}
-			
-			if(i == 3 || i == 13 || i == 23) {
-				cnt++;
-			}
-		}
-		
-        System.out.println(cnt);
+	int N = 5; // 시간 입력(단, 1 <= N <= 23)
+	int temp = 0;
+	
+	for(int i=0; i<=N; i++) {
+	    if(i == 3 || i == 13 || i == 23 ) { temp += 3600; }
+	    temp += 225;
+	}
+	
+	System.out.println(temp);
     }
 }
