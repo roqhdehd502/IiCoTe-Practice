@@ -45,9 +45,9 @@ class Main {
         System.out.println("4");
 
       } else if(knight.contains("c2") || knight.contains("c3") || knight.contains("c4") || knight.contains("c5") || knight.contains("c6") || knight.contains("c7")
-        || knight.contains("b6") || knight.contains("c6") || knight.contains("d6") || knight.contains("e6") || knight.contains("f6") || knight.contains("g6")
-        || knight.contains("f2") || knight.contains("f3") || knight.contains("f4") || knight.contains("f5") || knight.contains("f6") || knight.contains("f7")
-        || knight.contains("b3") || knight.contains("c3") || knight.contains("d3") || knight.contains("e3") || knight.contains("f3") || knight.contains("g3")) {
+        || knight.contains("b6") || knight.contains("d6") || knight.contains("e6") || knight.contains("f6") || knight.contains("g6")
+        || knight.contains("f2") || knight.contains("f3") || knight.contains("f4") || knight.contains("f5") || knight.contains("f7")
+        || knight.contains("b3") || knight.contains("d3") || knight.contains("e3") || knight.contains("g3")) {
         System.out.println("6");
 
       } else {
