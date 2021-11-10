@@ -38,10 +38,10 @@ class Main {
       if(knight.contains("a1") || knight.contains("a8") || knight.contains("h8") || knight.contains("h1")) {
         System.out.println("2");
 
-      } else if(knight.contains("c1") || knight.contains("d1") || knight.contains("e1") || knight.contains("e1")
+      } else if(knight.contains("c1") || knight.contains("d1") || knight.contains("e1") || knight.contains("f1")
         || knight.contains("a3") || knight.contains("a4") || knight.contains("a5") || knight.contains("a6")
         || knight.contains("c8") || knight.contains("d8") || knight.contains("e8") || knight.contains("f8")
-        || knight.contains("f3") || knight.contains("f4") || knight.contains("f5") || knight.contains("f6")) {
+        || knight.contains("h3") || knight.contains("h4") || knight.contains("h5") || knight.contains("h6")) {
         System.out.println("4");
 
       } else if(knight.contains("c2") || knight.contains("c3") || knight.contains("c4") || knight.contains("c5") || knight.contains("c6") || knight.contains("c7")
