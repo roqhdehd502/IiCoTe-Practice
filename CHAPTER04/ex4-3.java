@@ -31,23 +31,23 @@ class Main {
       //                   {"a7","b7","c7","d7","e7","f7","g7","h7"},
       //                   {"a8","b8","c8","d8","e8","f8","g8","h8"}};
       
-      // 나이트의 좌표 지정
+      // 나이트의 좌표 지정 
       System.out.print("나이트의 좌표 입력(ex. a1): ");
       String knight = sc.nextLine();
 
-      if(knight.contains("a1") || knight.contains("a8") || knight.contains("h8") || knight.contains("h1")) {
+      if(knight.equals("a1") || knight.equals("a8") || knight.equals("h8") || knight.equals("h1")) {
         System.out.println("2");
 
-      } else if(knight.contains("c1") || knight.contains("d1") || knight.contains("e1") || knight.contains("f1")
-        || knight.contains("a3") || knight.contains("a4") || knight.contains("a5") || knight.contains("a6")
-        || knight.contains("c8") || knight.contains("d8") || knight.contains("e8") || knight.contains("f8")
-        || knight.contains("h3") || knight.contains("h4") || knight.contains("h5") || knight.contains("h6")) {
+      } else if(knight.equals("c1") || knight.equals("d1") || knight.equals("e1") || knight.equals("f1")
+        || knight.equals("a3") || knight.equals("a4") || knight.equals("a5") || knight.equals("a6")
+        || knight.equals("c8") || knight.equals("d8") || knight.equals("e8") || knight.equals("f8")
+        || knight.equals("h3") || knight.equals("h4") || knight.equals("h5") || knight.equals("h6")) {
         System.out.println("4");
 
-      } else if(knight.contains("c2") || knight.contains("c3") || knight.contains("c4") || knight.contains("c5") || knight.contains("c6") || knight.contains("c7")
-        || knight.contains("b6") || knight.contains("d6") || knight.contains("e6") || knight.contains("f6") || knight.contains("g6")
-        || knight.contains("f2") || knight.contains("f3") || knight.contains("f4") || knight.contains("f5") || knight.contains("f7")
-        || knight.contains("b3") || knight.contains("d3") || knight.contains("e3") || knight.contains("g3")) {
+      } else if(knight.equals("c2") || knight.equals("c3") || knight.equals("c4") || knight.equals("c5") || knight.equals("c6") || knight.equals("c7")
+        || knight.equals("b6") || knight.equals("d6") || knight.equals("e6") || knight.equals("f6") || knight.equals("g6")
+        || knight.equals("f2") || knight.equals("f3") || knight.equals("f4") || knight.equals("f5") || knight.equals("f7")
+        || knight.equals("b3") || knight.equals("d3") || knight.equals("e3") || knight.equals("g3")) {
         System.out.println("6");
 
       } else {
