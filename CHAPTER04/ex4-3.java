@@ -55,5 +55,48 @@ class Main {
       }
 
       sc.close();
+        
+        
+        ==========================================
+		// 초기 좌표 지정
+		int kn[] = {0, 2}; // y, x
+
+		// 변위
+		int dx[] = {2, 1, -2, -1};
+		int dy[] = {2, 1, -2, -1};
+
+		// 경우의 수 카운팅
+		int cnt = 0;
+
+		switch() {
+			case 1:
+			case 2:
+			case 4:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 11:
+		}
+
+		// 나이트가 이동 가능한 경로
+		if(chess[kn[0]-dy[1]][kn[1]-dx[0]]) { // 1시방향
+		
+		} else if(chess[kn[0]-dy[0]][kn[1]-dx[1]]) { // 2시방향
+
+		} else if(chess[kn[0]-dy[3]][kn[1]-dx[0]]) { // 4시방향
+
+		} else if(chess[kn[0]-dy[2]][kn[1]-dx[1]]) { // 5시방향
+
+		} else if(chess[kn[0]-dy[2]][kn[1]-dx[3]]) { // 7시방향
+
+		} else if(chess[kn[0]-dy[3]][kn[1]-dx[2]]) { // 8시방향
+		
+		} else if(chess[kn[0]-dy[1]][kn[1]-dx[2]]) { // 10시방향
+
+		} else if(chess[kn[0]-dy[0]][kn[1]-dx[3]]) { // 11시방향
+
+		}
+        ==========================================
     }
 }
