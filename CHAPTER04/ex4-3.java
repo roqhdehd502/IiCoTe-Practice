@@ -35,52 +35,20 @@ class Main {
       switch(1) {
         case 1: // 1시방향
           if((kn[0]+dy[1] <= Y) && (kn[1]+dx[0] <= X)) { cnt++; }
-          System.out.println(kn[0]+dy[1]);
-          System.out.println(kn[1]+dx[0]);
-          System.out.println(cnt);
-          System.out.println();
         case 2: // 2시방향
           if((kn[0]+dy[0] <= Y) && (kn[1]+dx[1] <= X)) { cnt++; }
-          System.out.println(kn[0]-dy[0]);
-          System.out.println(kn[1]-dx[1]);
-          System.out.println(cnt);
-          System.out.println();
         case 4: // 4시방향
           if((kn[0]+dy[3] >= 1) && (kn[1]+dx[0] <= X)) { cnt++; }
-          System.out.println(kn[0]-dy[3]);
-          System.out.println(kn[1]-dx[0]);
-          System.out.println(cnt);
-          System.out.println();
         case 5: // 5시방향
           if((kn[0]+dy[2] >= 1) && (kn[1]+dx[1] <= X)) { cnt++; }
-          System.out.println(kn[0]-dy[2]);
-          System.out.println(kn[1]-dx[1]);
-          System.out.println(cnt);
-          System.out.println();
         case 7: // 7시방향
           if((kn[0]+dy[2] >= 1) && (kn[1]+dx[3] >= 1)) { cnt++; }
-          System.out.println(kn[0]-dy[2]);
-          System.out.println(kn[1]-dx[3]);
-          System.out.println(cnt);
-          System.out.println();
         case 8: // 8시방향
           if((kn[0]+dy[3] >= 1) && (kn[1]+dx[2] >= 1)) { cnt++; }
-          System.out.println(kn[0]-dy[3]);
-          System.out.println(kn[1]-dx[2]);
-          System.out.println(cnt);
-          System.out.println();
         case 10: // 10시방향
           if((kn[0]+dy[1] <= Y) && (kn[1]+dx[2] >= 1)) { cnt++; }
-          System.out.println(kn[0]-dy[1]);
-          System.out.println(kn[1]-dx[2]);
-          System.out.println(cnt);
-          System.out.println();
         case 11: // 11시방향
           if((kn[0]+dy[0] <= Y) && (kn[1]+dx[3] >= 1)) { cnt++; }
-          System.out.println(kn[0]-dy[0]);
-          System.out.println(kn[1]-dx[3]);
-          System.out.println(cnt);
-          System.out.println();
       }
 
       System.out.println(cnt);
