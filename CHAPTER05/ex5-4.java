@@ -38,52 +38,6 @@ public class Main {
   // 크기 설정
   public static int n, m;
   public static int[][] graph = new int[1000][1000];
-  public static int[] visitP = new int[n*m];
-  public static int[] visitQ = new int[n*m];
-
-  // BFS 함수 정의
-  public static void bfs(int a, int b) {
-    Queue<Integer> p = new LinkedList<>();
-    Queue<Integer> q = new LinkedList<>();
-    p.offer(a);
-    q.offer(b);
-
-    // 현재 노드를 방문 처리
-    visitP[a] = 2;
-    visitQ[b] = 2;
-
-    // 큐가 빌 때까지 반복
-    while(!p.isEmpty()) {
-      // 큐에서 하나의 원소를 뽑아 출력
-      int x = p.poll();
-      System.out.print(x + " ");
-      // 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
-      for(int i = 0; i < graph.length; i++) {
-        int y = graph[x][i];
-        if(visitP[y] != 2) {
-          p.offer(y);
-          visitP[y] = 2;
-        } else if(visitP[y] == 2) {
-          visitP[y] = 2;
-        }
-      }
-    }
-    while(!q.isEmpty()) {
-      // 큐에서 하나의 원소를 뽑아 출력
-      int y = q.poll();
-      System.out.print(y + " ");
-      // 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
-      for(int i = 0; i < graph.length; i++) {
-        int x = graph[i][y];
-        if(visitQ[x] != 2) {
-          p.offer(x);
-          visitQ[x] = 2;
-        } else if(visitQ[x] == 2) {
-          visitQ[x] = 2;
-        }
-      }
-    }
-  }
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
@@ -107,12 +61,18 @@ public class Main {
     int j = 0;
      
     while(true) { 
+      System.out.println("현재 위치: " + i + ", " + j);
+
       // 최대한 우측 하단으로 이동
-      if (graph[i+1][j] == 1 || graph[i][j+1] == 1) { 
-        if (bfs(i, j)) { result += 1; }
-      // 이미 방문한 곳은 카운트하지 않는다
-      } else if (graph[i][j] == 2) {
-        if (bfs(i, j)) { result += 0; }
+      if (graph[i+1][j] == 1) { 
+        graph[i][j] = 2;
+        i++;
+        result++;
+      } else if (graph[i][j+1] == 1) {
+        graph[i][j] = 2;
+        j++;
+        result++;
+      // 이미 방문하거나 갈 수 없는 곳은 스킵한다
       } else {
         continue;
       }
@@ -121,7 +81,7 @@ public class Main {
       if (graph[i][j] == graph[n-1][m-1]) { break; }
     }
     
-    System.out.println(result); // 정답 출력
+    System.out.println("result: " + result); // 정답 출력
     sc.close();  
   }
 }
