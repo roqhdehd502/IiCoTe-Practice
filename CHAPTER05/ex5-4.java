@@ -38,24 +38,30 @@ public class Main {
   // 크기 설정
   public static int n, m;
   public static int[][] graph = new int[1000][1000];
+  public static int[] visited = new int[n*m];
 
-  public static boolean dfs(int x, int y) {
-    // 주어진 범위를 벗어나는 경우에는 즉시 종료
-    if (x <= -1 || x >=n || y <= -1 || y >= m) {
-      return false;
+  // BFS 함수 정의
+  public static void bfs(int start) {
+    Queue<Integer> q = new LinkedList<>();
+    q.offer(start);
+    // 현재 노드를 방문 처리
+    visited[start] = 2;
+    // 큐가 빌 때까지 반복
+    while(!q.isEmpty()) {
+      // 큐에서 하나의 원소를 뽑아 출력
+      int x = q.poll();
+      System.out.print(x + " ");
+      // 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
+      for(int i = 0; i < graph.get(x).size(); i++) {
+        int y = graph.get(x).get(i);
+        if(visited[y] != 2) {
+          q.offer(y);
+          visited[y] = 2;
+        } else if(visited[y] == 2) {
+          visited[y] = 2;
+        }
+      }
     }
-    // 노드에 괴물이 없으면
-    if (graph[x][y] == 1) {
-      // 해당 노드 방문 처리
-      //graph[x][y] = 0;
-      // 상, 하, 좌, 우의 위치들도 모두 재귀적으로 호출
-      dfs(x - 1, y);
-      dfs(x, y - 1);
-      dfs(x + 1, y);
-      dfs(x, y + 1);
-      return true;
-    }
-    return false;
   }
 
   public static void main(String[] args) {
@@ -67,23 +73,32 @@ public class Main {
     sc.nextLine(); // 버퍼 지우기
 
     // 2차원 리스트의 맵 정보 입력 받기
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i<n; i++) {
       String str = sc.nextLine();
       for (int j = 0; j < m; j++) {
         graph[i][j] = str.charAt(j) - '0';
       }
     }
 
-    // 모든 노드(위치)에 대하여 음료수 채우기
+    // 모든 노드(위치)에 대하여 미로 탐색하기
     int result = 0;
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < m; j++) {
-        // 현재 위치에서 DFS 수행
-        if (dfs(i, j)) {
-          result += 1;
-        }
+    int i = 1;
+    int j = 1;
+    
+    while(true) { 
+      // 최대한 아래로 이동
+      if (graph[i+1][j] == 1) { 
+        if (bfs(i, j)) { result += 1; }
+      } else if (graph[i][j+1] == 1) {
+        if (bfs(i, j)) { result += 1; }
+      } else if (graph[i][j+1] == 2) {
+        if (bfs(i, j)) { result += 0; }
       }
+
+      // n, m 좌표에 도달하면 루프탈출
+      if (graph[i][j] == graph[n-1][m-1]) { break; }
     }
+    
     System.out.println(result); // 정답 출력
     sc.close();  
   }
