@@ -52,8 +52,8 @@ public class Main {
       int x = q.poll();
       System.out.print(x + " ");
       // 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
-      for(int i = 0; i < graph.get(x).size(); i++) {
-        int y = graph.get(x).get(i);
+      for(int i = 0; i < graph.length; i++) {
+        int y = graph[x][i];
         if(visited[y] != 2) {
           q.offer(y);
           visited[y] = 2;
@@ -81,18 +81,19 @@ public class Main {
     }
 
     // 모든 노드(위치)에 대하여 미로 탐색하기
-    int result = 0;
-    int i = 1;
-    int j = 1;
-    
+    int result = 1;
+    int i = 0;
+    int j = 0;
+     
     while(true) { 
-      // 최대한 아래로 이동
-      if (graph[i+1][j] == 1) { 
+      // 최대한 우측 하단으로 이동
+      if (graph[i+1][j] == 1 || graph[i][j+1] == 1) { 
         if (bfs(i, j)) { result += 1; }
-      } else if (graph[i][j+1] == 1) {
-        if (bfs(i, j)) { result += 1; }
-      } else if (graph[i][j+1] == 2) {
+      // 이미 방문한 곳은 카운트하지 않는다
+      } else if (graph[i][j] == 2) {
         if (bfs(i, j)) { result += 0; }
+      } else {
+        continue;
       }
 
       // n, m 좌표에 도달하면 루프탈출
