@@ -61,10 +61,8 @@ public class Main {
                 (visit[playerRowPos + dRow[playerDir]][playerColPos + dCol[playerDir]] == false)) {
           visit[playerRowPos + dRow[playerDir]][playerColPos + dCol[playerDir]] = true;
           visitCount++;
-
           playerRowPos += dRow[playerDir];
           playerColPos += dCol[playerDir];
-
           count = 0;
         } else {
           count++;
