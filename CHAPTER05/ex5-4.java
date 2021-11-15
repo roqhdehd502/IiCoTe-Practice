@@ -38,27 +38,48 @@ public class Main {
   // 크기 설정
   public static int n, m;
   public static int[][] graph = new int[1000][1000];
-  public static int[] visited = new int[n*m];
+  public static int[] visitP = new int[n*m];
+  public static int[] visitQ = new int[n*m];
 
   // BFS 함수 정의
-  public static void bfs(int start) {
+  public static void bfs(int a, int b) {
+    Queue<Integer> p = new LinkedList<>();
     Queue<Integer> q = new LinkedList<>();
-    q.offer(start);
+    p.offer(a);
+    q.offer(b);
+
     // 현재 노드를 방문 처리
-    visited[start] = 2;
+    visitP[a] = 2;
+    visitQ[b] = 2;
+
     // 큐가 빌 때까지 반복
-    while(!q.isEmpty()) {
+    while(!p.isEmpty()) {
       // 큐에서 하나의 원소를 뽑아 출력
-      int x = q.poll();
+      int x = p.poll();
       System.out.print(x + " ");
       // 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
       for(int i = 0; i < graph.length; i++) {
         int y = graph[x][i];
-        if(visited[y] != 2) {
-          q.offer(y);
-          visited[y] = 2;
-        } else if(visited[y] == 2) {
-          visited[y] = 2;
+        if(visitP[y] != 2) {
+          p.offer(y);
+          visitP[y] = 2;
+        } else if(visitP[y] == 2) {
+          visitP[y] = 2;
+        }
+      }
+    }
+    while(!q.isEmpty()) {
+      // 큐에서 하나의 원소를 뽑아 출력
+      int y = q.poll();
+      System.out.print(y + " ");
+      // 해당 원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
+      for(int i = 0; i < graph.length; i++) {
+        int x = graph[i][y];
+        if(visitQ[x] != 2) {
+          p.offer(x);
+          visitQ[x] = 2;
+        } else if(visitQ[x] == 2) {
+          visitQ[x] = 2;
         }
       }
     }
