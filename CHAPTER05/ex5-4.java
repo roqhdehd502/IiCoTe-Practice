@@ -59,29 +59,42 @@ public class Main {
     int result = 1;
     int i = 0;
     int j = 0;
-     
-    while(true) { 
+
+    loopOut:
+    while(i<n && j<m) { 
       System.out.println("현재 위치: " + i + ", " + j);
 
       // 최대한 우측 하단으로 이동
       if (graph[i+1][j] == 1) { 
+        graph[i][j] = 2;
         i++;
         result++;
-      }
-      
-      if (graph[i][j+1] == 1) {
+        System.out.println("변위: " + i + ", " + j);
+        System.out.println("result: " + result);
+        System.out.println();
+      } else if (graph[i][j+1] == 1) {
+        graph[i][j] = 2;
         j++;
         result++;
+        System.out.println("변위: " + i + ", " + j);
+        System.out.println("result: " + result);
+        System.out.println();
+      } else if(graph[i-1][j] == 2) {
+        i--;
+        System.out.println("변위: " + i + ", " + j);
+        System.out.println("result: " + result);
+        System.out.println();
+      } else if(graph[i][j-1] == 2) {
+        j--;
+        System.out.println("변위: " + i + ", " + j);
+        System.out.println("result: " + result);
+        System.out.println();
+      } else if((i==(n-1)) && (j==(m-1))) {
+        break loopOut;
       }
-
-      // 이미 방문하거나 갈 수 없는 곳은 스킵한다
-      if (graph[i+1][j] != 1 || graph[i][j+1] != 1) { continue; }
-
-      // n, m 좌표에 도달하면 루프탈출
-      if (graph[i][j] == graph[n-1][m-1]) { break; }
     }
     
-    System.out.println("result: " + result); // 정답 출력
+    System.out.println("정답: " + result); // 정답 출력
     sc.close();  
   }
 }
