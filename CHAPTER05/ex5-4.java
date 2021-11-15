@@ -61,7 +61,7 @@ public class Main {
     int j = 0;
 
     loopOut:
-    while(i<n && j<m) { 
+    while(true) { 
       System.out.println("현재 위치: " + i + ", " + j);
 
       // 최대한 우측 하단으로 이동
@@ -89,9 +89,9 @@ public class Main {
         System.out.println("변위: " + i + ", " + j);
         System.out.println("result: " + result);
         System.out.println();
-      } else if((i==(n-1)) && (j==(m-1))) {
-        break loopOut;
       }
+
+      if((i==(n-1)) && (j==(m-1))) { break loopOut; }
     }
     
     System.out.println("정답: " + result); // 정답 출력
