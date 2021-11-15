@@ -27,7 +27,7 @@
 10
 */
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
   // 크기 설정
