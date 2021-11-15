@@ -65,17 +65,17 @@ public class Main {
 
       // 최대한 우측 하단으로 이동
       if (graph[i+1][j] == 1) { 
-        graph[i][j] = 2;
         i++;
         result++;
-      } else if (graph[i][j+1] == 1) {
-        graph[i][j] = 2;
+      }
+      
+      if (graph[i][j+1] == 1) {
         j++;
         result++;
-      // 이미 방문하거나 갈 수 없는 곳은 스킵한다
-      } else {
-        continue;
       }
+
+      // 이미 방문하거나 갈 수 없는 곳은 스킵한다
+      if (graph[i+1][j] != 1 || graph[i][j+1] != 1) { continue; }
 
       // n, m 좌표에 도달하면 루프탈출
       if (graph[i][j] == graph[n-1][m-1]) { break; }
