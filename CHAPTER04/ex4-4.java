@@ -2,90 +2,94 @@
 4-4. 게임 개발
 */
 
-class Main {
-    public static void main(String[] args) {
-      // 크기 지정
-      int X = 4;
-      int Y = 4;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-      // 플레이어의 변위(인덱스 별 - 0: 북, 1: 동, 2: 남, 3: 서)
-      int dx[] = {0, 1, 0, -1};
-      int dy[] = {-1, 0, 1, 0};
+public class Main {
+    // 게임의 맵을 담당
+    static int[][] map; 
+    // 각 칸의 방문 여부 확인
+    static boolean[][] visit;
+    // 캐릭터가 바라보는 방향 
+    static int playerDir;
+    // 캐릭터의 좌표값
+    static int playerRowPos;
+    static int playerColPos;
 
-      // 맵 시드
-      int map[][] = {{1, 1, 1, 1},
-                     {1, 0, 0, 1},
-                     {1, 1, 0, 1},
-                     {1, 1, 1, 1}}; 
+    // 북, 동, 남, 서를 바라볼때 움직이는 경로
+    static int[] dRow = {-1, 0, 1, 0};
+    static int[] dCol = {0, 1, 0, -1};
 
-      // 캐릭터의 좌표 지정(y, x)
-      int c[] = {2, 2};
+    public static void main(String[] args) throws Exception {
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-      // 방문한 칸의 수
-      int cnt = 0;
+      System.out.println("크기 입력");
+      StringTokenizer st = new StringTokenizer(br.readLine());
 
-      outerOut:
-      while(true) {
-        System.out.println("현재 지형: " + map[c[1]][c[0]]);
-        System.out.println("현재 좌표(y, x): " + c[1] + ", " + c[0]);
-        innerOut:
-        switch(1) {
-          case 1:
-              if(c[0] >= 0) { // 북
-                if(map[c[1]+dy[0]][c[0]+dx[0]] == 0) {
-                  map[c[1]][c[0]] = 2;
-                  c[0] += dy[0];
-                  c[1] += dx[0];
-                  cnt++;
-                  System.out.println("이동한 지형: " + map[c[1]][c[0]]);
-                  System.out.println("이동한 좌표(y, x): " + c[1] + ", " + c[0]);
-                  System.out.println("방문한 칸의 수: " + cnt);
-                  System.out.println();
-                  break innerOut;
-                }
-              } else if(c[1] <= (X-1)) { // 동
-                if(map[c[1]+dy[1]][c[0]+dx[1]] == 0) {
-                  map[c[1]][c[0]] = 2;
-                  c[0] += dy[1];
-                  c[1] += dx[1];
-                  cnt++;
-                  System.out.println("이동한 지형: " + map[c[1]][c[0]]);
-                  System.out.println("이동한 좌표(y, x): " + c[1] + ", " + c[0]);
-                  System.out.println("방문한 칸의 수: " + cnt);
-                  System.out.println();
-                  break innerOut;
-                }
-              } else if(c[0] <= (Y-1)) { // 남
-                if(map[c[1]+dy[2]][c[0]+dx[2]] == 0) {
-                  map[c[1]][c[0]] = 2;
-                  c[0] += dy[2];
-                  c[1] += dx[2];
-                  cnt++;
-                  System.out.println("이동한 지형: " + map[c[1]][c[0]]);
-                  System.out.println("이동한 좌표(y, x): " + c[1] + ", " + c[0]);
-                  System.out.println("방문한 칸의 수: " + cnt);
-                  System.out.println();
-                  break innerOut;
-                }               
-              } else if(c[1] >= 0) { // 서
-                if(map[c[1]+dy[3]][c[0]+dx[3]] == 0) {
-                  map[c[1]][c[0]] = 2;
-                  c[0] += dy[3];
-                  c[1] += dx[3];
-                  cnt++;
-                  System.out.println("이동한 지형: " + map[c[1]][c[0]]);
-                  System.out.println("이동한 좌표(y, x): " + c[1] + ", " + c[0]);
-                  System.out.println("방문한 칸의 수: " + cnt);
-                  System.out.println();
-                  break innerOut;
-                }
-              }
-            
-          default:
-            break outerOut; // 갈 곳 없으면 루프 탈출
-        }    
+      int mapRow = Integer.parseInt(st.nextToken());
+      int mapCol = Integer.parseInt(st.nextToken());
+
+      map = new int[mapRow][mapCol];
+      visit = new boolean[mapRow][mapCol];
+
+      System.out.println("초기 좌표 및 방향 입력");
+      st = new StringTokenizer(br.readLine());
+      playerRowPos = Integer.parseInt(st.nextToken());
+      playerColPos = Integer.parseInt(st.nextToken());
+      playerDir = Integer.parseInt(st.nextToken());
+
+      visit[playerRowPos][playerColPos] = true;
+
+      System.out.println("맵 시드 입력");
+      for (int i = 0; i < mapRow; i++) {
+          st = new StringTokenizer(br.readLine());
+          for (int j = 0; j < mapCol; j++) {
+            map[i][j] = Integer.parseInt(st.nextToken());
+          }
       }
 
-      System.out.println("최종적으로 이동한 칸의 수: " + cnt);
+      // 네 번 회전 하였는지 카운트하여 점검
+      int count = 0;
+      // 몇 칸 방문했는지 세기
+      int visitCount = 1;
+
+      while (true) {
+        turnPlayer();
+
+        if ((map[playerRowPos + dRow[playerDir]][playerColPos + dCol[playerDir]] == 0) &&
+                (visit[playerRowPos + dRow[playerDir]][playerColPos + dCol[playerDir]] == false)) {
+          visit[playerRowPos + dRow[playerDir]][playerColPos + dCol[playerDir]] = true;
+          visitCount++;
+
+          playerRowPos += dRow[playerDir];
+          playerColPos += dCol[playerDir];
+
+          count = 0;
+        } else {
+          count++;
+        }
+
+        if (count == 4) {
+          if (map[playerRowPos - dRow[playerDir]][playerColPos - dCol[playerDir]] == 1) {
+            break;
+          } else {
+            count = 0;
+            playerRowPos -= dRow[playerDir];
+            playerColPos -= dCol[playerDir];
+          }
+        }
+      }
+
+    System.out.println("방문 횟수: " + visitCount);
+  }
+  
+  // 방향전환 함수
+  static void turnPlayer() {
+    playerDir -= 1;
+
+    if (playerDir < 0) {
+      playerDir = 3;
     }
+  }
 }
