@@ -4,26 +4,30 @@ Day 01. 슬기로운 일상생활
 */
 
 class Main {
-  private int janssen;
-  String pfizer, moderna;
+  private static int vaccine;
+  // private int janssen;
+  // private String pfizer, moderna;
+  private static int maskStat;
 
   public static void main(String[] args) {
-    vaccine();
-    mask(3);
+    vaccine = 3; // 화이자
+    maskStat = 3; // 입과 코를 덮는 마스크 착용
+
+    vacc(vaccine);
+    mask(maskStat);
   }
 
-  public static String vaccine(int once) {
+  public static String vacc(int vaccine) {
+    if(vaccine == 1) {
+      
+    }
     return "백신 접종완료!";
   }
 
-  public static String vaccine(String twice) {
-    if(d)
-  }
-
-  public static String mask(int stat) {
-    if(stat == 1) { return "턱스크 ㄴㄴ"; }
-    else if(stat == 2) { return "입스크 ㄴㄴ"; }
-    else if(stat == 3) { return "좋은 마스크 착용!"; }
+  public static String mask(int maskStat) {
+    if(maskStat == 1) { return "턱스크 ㄴㄴ"; }
+    else if(maskStat == 2) { return "입스크 ㄴㄴ"; }
+    else if(maskStat == 3) { return "좋은 마스크 착용!"; }
     else { return "마스크 쓰세용"; }
   }
 }
