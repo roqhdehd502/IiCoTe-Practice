@@ -27,9 +27,12 @@ N, K, 그리고 배열 A와 B의 정보가 주어졌을 때, 최대 K 번의 바
 */
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 class Main {
   public static void main(String[] args) {
+    // Scanner sc = new Scanner(System.in);
+
     int n = 5;
     int k = 3;
 
@@ -40,14 +43,10 @@ class Main {
     Arrays.sort(a);
     Arrays.sort(b);
 
-    for(int i=0; i<k; i++) {
-      a[i] = b[b.length-(i+1)];
-    }
-
-    for(int i=0; i<n; i++) {
-      temp += a[i];
-    }
+    for(int i=0; i<k; i++) { a[i] = b[b.length-(i+1)]; }
+    for(int i=0; i<n; i++) { temp += a[i]; }
 
     System.out.println(temp);
+    // sc.close();
   }
 }
