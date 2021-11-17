@@ -14,18 +14,29 @@ class Main {
     
     int[] a = new int[n];
     int[] b = new int[n];
-    int temp = 0;
+    
+    int temp  = 0;
+    int sum = 0;
 
     for(int i = 0; i<n; i++) { a[i] = sc.nextInt(); }
     for(int i = 0; i<n; i++) { b[i] = sc.nextInt(); } 
+    sc.close();
 
     Arrays.sort(a);
     Arrays.sort(b);
 
-    for(int i=0; i<k; i++) { a[i] = b[b.length-(i+1)]; }
-    for(int i=0; i<n; i++) { temp += a[i]; }
+    for(int i=0; i<k; i++) {
+      if(a[i] < b[b.length-i-1]) {
+        temp = a[i];
+        a[i] = b[b.length-i-1];
+        b[b.length-i-1] = temp;
+      } else {
+        break;
+      }
+    }
 
-    System.out.println(temp);
-    sc.close();
+    for(int i=0; i<n; i++) { sum += a[i]; }
+
+    System.out.println(sum);
   }
 }
