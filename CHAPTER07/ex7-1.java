@@ -25,14 +25,26 @@ class Main {
     Scanner sc = new Scanner(System.in);
     
     int n = sc.nextInt(); // 떡의 개수
-    int h = sc.nextInt(); // 절단기에 지정된 높이
-    int m = 0; // 손님이 가져가는 떡의 길이
+    int m = sc.nextInt(); // 손님이 가져가는 떡의 길이
+    int h = 0; // 절단기에 지정된 높이
+    int temp = 0;
 
     int[] rc = new int[n]; // 떡
     for(int i=0; i<rc.length; i++) { rc[i] = sc.nextInt(); } // 각 떡의 길이 지정
     sc.close();
 
-    
+    // for(int i=0; i<rc.length; i++) {
+    //   if(rc[i] > h) {
+    //     rc[i] -= h;
+    //     m += rc[i];
+    //   } else {
+    //     rc[i] = 0;
+    //     m += rc[i];
+    //   }
+    // }
 
+    // System.out.println(m); // 이게 6이 나와야 한다면...
+
+    System.out.println(h); // 절단기에 설정할 수 있는 높이의 최댓값
   }
 }
