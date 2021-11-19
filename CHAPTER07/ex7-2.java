@@ -26,22 +26,48 @@ class Main {
     for(int i=0; i<arr2.length; i++) { arr2[i] = sc.nextInt(); }
     sc.close();
 
-    int cnt = 0;
-    int mid = 0;
+    // int mid = 0;
+    // for(int j=mid; j<arr1.length; j++) {
+    //   if(arr2[i] == arr1[j]) {
+    //     System.out.print("yes ");
+    //     cnt++;
+    //     mid = j; 
+    //   }
+    // }
+    // if(cnt <= 0) { 
+    //   System.out.print("no "); 
+    // } else {
+    //   cnt = 0;
+    // }
+    
+    int result = 0;
 
     for(int i=0; i<arr2.length; i++) {
-      for(int j=mid; j<arr1.length; j++) {
-        if(arr2[i] == arr1[j]) {
-          System.out.print("yes ");
-          cnt++;
-          mid = j; 
-        }
-      }
-      if(cnt <= 0) { 
-        System.out.print("no "); 
+      result = binarySearch(arr1, i , 0, n-1);
+      
+      if(result != -1) {
+        System.out.print("yes ");
       } else {
-        cnt = 0;
+        System.out.print("no ");
       }
     }
+  }
+
+  private static int binarySearch(int[] array, int target, int start, int end) {
+    int mid = 0;
+
+    while(start <= end) {
+      mid = (start + end) / 2;
+      
+      if(array[mid] == target) {
+        return mid;
+      } else if(array[mid] > target) {
+        end = mid - 1;
+      } else {
+        start = mid + 1;
+      }
+    }
+
+    return -1;
   }
 }
