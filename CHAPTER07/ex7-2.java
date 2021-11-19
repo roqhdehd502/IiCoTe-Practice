@@ -10,6 +10,7 @@ no yes yes
 */
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 class Main {
   public static void main(String[] args) {
@@ -18,6 +19,7 @@ class Main {
     int n = sc.nextInt();
     int arr1[] = new int[n];
     for(int i=0; i<arr1.length; i++) { arr1[i] = sc.nextInt(); }
+    Arrays.sort(arr1);
 
     int m = sc.nextInt();
     int arr2[] = new int[m];
@@ -25,19 +27,21 @@ class Main {
     sc.close();
 
     int cnt = 0;
+    int mid = 0;
 
     for(int i=0; i<arr2.length; i++) {
-      for(int j=0; j<arr1.length; j++) {
-        if(arr2[i] == arr1[j]) { cnt++; }
+      for(int j=mid; j<arr1.length; j++) {
+        if(arr2[i] == arr1[j]) {
+          System.out.print("yes ");
+          cnt++;
+          mid = j; 
+        }
       }
-
-      if(cnt >= 1) { 
-        System.out.print("yes "); 
-      } else {
+      if(cnt <= 0) { 
         System.out.print("no "); 
+      } else {
+        cnt = 0;
       }
-
-      cnt = 0;
     }
   }
 }
