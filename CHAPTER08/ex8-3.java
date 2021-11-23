@@ -12,7 +12,6 @@
 */
 
 import java.util.Scanner;
-import java.util.Arrays;
 
 class Main {
   public static void main(String[] args) {
@@ -20,19 +19,19 @@ class Main {
 
     int n = sc.nextInt();
     int[] k = new int[n];
-    int max = 0;
+    int m1 = 0;
+    int m2 = 0;
     
     for(int i=0; i<k.length; i++) { k[i] = sc.nextInt(); }
     sc.close();
-    
-    Arrays.sort(k);
 
-    if(n % 2 == 0) {
-      for(int i=n-1; i>((n/2)-1); i--) { max += k[i]; }
-    } else if(n % 2 == 1) {
-      for(int i=n-1; i>=n/2; i--) { max += k[i]; }
+    for(int i=0; i<k.length; i+=2) { m1 += k[i]; }
+    for(int i=1; i<k.length; i+=2) { m2 += k[i]; }
+
+    if(m1 > m2) {
+      System.out.println(m1);
+    } else {
+      System.out.println(m2);
     }
-    
-    System.out.println(max);
   }
 }
