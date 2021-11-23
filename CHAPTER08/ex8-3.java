@@ -28,10 +28,6 @@ class Main {
     for(int i=0; i<k.length; i+=2) { m1 += k[i]; }
     for(int i=1; i<k.length; i+=2) { m2 += k[i]; }
 
-    if(m1 > m2) {
-      System.out.println(m1);
-    } else {
-      System.out.println(m2);
-    }
+    System.out.println(Math.max(m1, m2));
   }
 }
