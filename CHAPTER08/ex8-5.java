@@ -56,9 +56,12 @@ class Main {
       } else if(arr[arr.length-1] > m) {
         temp = -1;
         break;
+      } else if(m % arr[i] != 0) {
+        temp += Math.min(m / arr[i], b);
+        m -= temp * arr[i];
       } else {
         temp += m / arr[i];
-        m -= m / arr[i];
+        m -= temp * arr[i];
       }
     }
 
