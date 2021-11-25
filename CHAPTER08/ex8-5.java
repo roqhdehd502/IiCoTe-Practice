@@ -44,6 +44,8 @@ class Main {
     int m = sc.nextInt();
     int[] arr = new int[n];
     int temp = 0;
+    int[] d = new int[101];
+    int cnt = 0;
 
     for(int i=0; i<arr.length; i++) { arr[i] = sc.nextInt(); }
     sc.close();
@@ -57,8 +59,10 @@ class Main {
         temp = -1;
         break;
       } else if(m % arr[i] != 0) {
+        cnt++;
+        d[cnt] = Math.min(m / arr[i], b);
         temp += Math.min(m / arr[i], b);
-        m -= temp * arr[i];
+        m -= d[cnt] * arr[i];
       } else {
         temp += m / arr[i];
         m -= temp * arr[i];
