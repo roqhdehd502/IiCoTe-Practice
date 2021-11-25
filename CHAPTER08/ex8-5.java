@@ -60,8 +60,8 @@ class Main {
         break;
       } else if(m % arr[i] != 0) {
         cnt++;
-        d[cnt] = Math.min(m / arr[i], b);
-        temp += Math.min(m / arr[i], b);
+        d[cnt] = Math.min(m / arr[i], m / arr[i]-1);
+        temp += Math.min(m / arr[i], m / arr[i]-1);
         m -= d[cnt] * arr[i];
       } else {
         temp += m / arr[i];
