@@ -33,8 +33,17 @@ M원을 만들기 위한 최소한의 화폐 개수를 출력하는 프로그램
 -1
 */
 
+import java.util.Scanner;
+
 class Main {
   public static void main(String[] args) {
-    System.out.println("Hello world!");
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    int arr[] = new int[n];
+
+    for(int i=0; i<arr.length; i++) { arr[i] = sc.nextInt(); }
+    sc.close();
   }
 }
