@@ -34,6 +34,7 @@ M원을 만들기 위한 최소한의 화폐 개수를 출력하는 프로그램
 */
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 class Main {
   public static void main(String[] args) {
@@ -41,9 +42,29 @@ class Main {
 
     int n = sc.nextInt();
     int m = sc.nextInt();
-    int arr[] = new int[n];
+    int[] arr = new int[n];
+    int temp = 0;
+
+    // int d[i] = new int[10001];
 
     for(int i=0; i<arr.length; i++) { arr[i] = sc.nextInt(); }
     sc.close();
+
+    Arrays.sort(arr);
+    for(int i=arr.length-1; i>=0; i--) {
+      if(m % arr[arr.length-1] == 0) {
+        temp = m / arr[arr.length-1];
+        break;
+      } else if(arr[arr.length-1] > m) {
+        temp = -1;
+        break;
+      } else {
+        temp += m / arr[i];
+        m -= m / arr[i];
+      }
+      
+    }
+
+    System.out.println(temp);
   }
 }
