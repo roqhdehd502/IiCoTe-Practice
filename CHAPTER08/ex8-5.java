@@ -45,12 +45,10 @@ class Main {
     int[] arr = new int[n];
     int temp = 0;
 
-    // int d[i] = new int[10001];
-
     for(int i=0; i<arr.length; i++) { arr[i] = sc.nextInt(); }
     sc.close();
-
     Arrays.sort(arr);
+    
     for(int i=arr.length-1; i>=0; i--) {
       if(m % arr[arr.length-1] == 0) {
         temp = m / arr[arr.length-1];
@@ -62,7 +60,6 @@ class Main {
         temp += m / arr[i];
         m -= m / arr[i];
       }
-      
     }
 
     System.out.println(temp);
