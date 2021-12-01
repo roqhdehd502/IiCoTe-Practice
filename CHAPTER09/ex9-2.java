@@ -58,7 +58,7 @@ class Main {
     }
 
     // 각 간선의 대한 정보를 입력받아, 그 값으로 초기화
-    for(int i=1; i<=m; i++) {
+    for(int i=0; i<m; i++) {
       // A와 B가 서로에게 가는 비용은 1이라고 설정
       int a = sc.nextInt();
       int b = sc.nextInt();
