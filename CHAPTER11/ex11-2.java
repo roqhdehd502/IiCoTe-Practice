@@ -16,6 +16,14 @@
 출력예시2
 =====
 210
+
+입력예시3
+=====
+33012
+
+출력예시3
+=====
+27
 */
 
 import java.util.Scanner;
@@ -34,11 +42,11 @@ class Main {
     for(int i=0; i<s.length; i++) { s[i] = sc.nextInt(); }
     sc.close();
 
-    Arrays.sort(s); // 최댓값을 만들려면 가능한 0과 작은 수끼리 더하게 유도한다
+    Arrays.sort(s); // 최댓값을 만들려면 가능한 0과 1같은 작은 수끼리 더하게 유도한다
     for(int i=0; i<s.length; i++) {
       if(i == 0) {
         temp = s[i];
-      } else if(i>=1 && s[i-1] == 0) {
+      } else if(i>=1 && (s[i-1] == 0 || s[i-1] == 1)) {
         temp += s[i];      
       } else {
         temp *= s[i];
