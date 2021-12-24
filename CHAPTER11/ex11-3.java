@@ -1,10 +1,8 @@
 /**
 11-3. 문자열 뒤집기
-
 입력예시
 =====
 0001100
-
 출력예시
 =====
 1
@@ -42,10 +40,6 @@ class Main {
       }
     }
 
-    if(oCnt < zCnt) {
-      System.out.println(oCnt);
-    } else {
-      System.out.println(zCnt);
-    }
+    System.out.println(Math.min(oCnt, zCnt));
   }
 }
