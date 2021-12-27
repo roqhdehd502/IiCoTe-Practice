@@ -43,18 +43,18 @@ class Main {
     Scanner sc = new Scanner(System.in);
 
     int n = sc.nextInt(); // 동전의 갯수
-    int[] money = new int[n]; // 동전의 단위
+    int[] coin = new int[n]; // 동전의 단위
     int target = 1; // 만들수 없는 금액을 찾기 위한 타겟 값(초기값을 1로 지정)
     
-    for(int i=0; i<money.length; i++) { money[i] = sc.nextInt(); }
+    for(int i=0; i<coin.length; i++) { coin[i] = sc.nextInt(); }
     sc.close();
-    Arrays.sort(money); // 타겟 값을 찾기위해 오름차순으로 정렬한다
+    Arrays.sort(coin); // 타겟 값을 찾기위해 오름차순으로 정렬한다
     
-    for(int x=0; x<money.length; x++) { // 그리디 알고리즘을 이용해 타겟 값(target)을 찾는다
-      if(target < money[x]) { // 해당 인덱스 값(동전의 단위)이 타겟 값보다 작으면 이 값이 만들 수 없는 값이 된다
+    for(int x=0; x<coin.length; x++) { // 그리디 알고리즘을 이용해 타겟 값(target)을 찾는다
+      if(target < coin[x]) { // 해당 인덱스 값(동전의 단위)이 타겟 값보다 작으면 이 값이 만들 수 없는 값이 된다
         break;
       } else { // 그렇지 않으면 이 값은 만들 수 있는 값이 된다
-        target += money[x];
+        target += coin[x];
       }
     }
 
