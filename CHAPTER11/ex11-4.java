@@ -51,7 +51,7 @@ class Main {
     Arrays.sort(coin); // 타겟 값을 찾기위해 오름차순으로 정렬한다
     
     for(int x=0; x<coin.length; x++) { // 그리디 알고리즘을 이용해 타겟 값(target)을 찾는다
-      if(target < coin[x]) { // 해당 인덱스 값(동전의 단위)이 타겟 값보다 작으면 이 값이 만들 수 없는 값이 된다
+      if(target < coin[x]) { // 해당 인덱스 값(동전의 단위)이 타겟 값보다 작으면 이 값은 만들 수 없는 값이 된다
         break;
       } else { // 그렇지 않으면 이 값은 만들 수 있는 값이 된다
         target += coin[x];
