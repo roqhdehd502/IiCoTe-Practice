@@ -23,17 +23,31 @@ class Main {
     int[] k = new int[n]; // 각 볼링공의 무게(1 <= k <= m)
     for(int i=0; i<k.length; i++) { k[i] = sc.nextInt(); }
     sc.close();
+    
+    // ===== CASE.1 =====
+    // int answer = n*(n-1)/2; // 중복되지 않는 볼링공을 고를때의 모든 경우의 수
+    // int temp = 0;
 
-    int answer = n*(n-1)/2; // 중복되지 않는 볼링공을 고를때의 모든 경우의 수
+    // for(int i=0; i<k.length; i++) {
+    //   for(int j=temp; j<k.length; j++) {
+    //     if((k[i] == k[j])) {
+    //       answer--; // 무게가 서로 다른 볼링공을 골라야한다     
+    //     }
+    //   }
+    //   temp++;
+    // }
+    
+    // ===== CASE.2 =====
+    int answer = 0;
     int temp = 0;
 
     for(int i=0; i<k.length; i++) {
       for(int j=temp; j<k.length; j++) {
-        if((k[i] == k[j])) {
-          answer--; // 무게가 서로 다른 볼링공을 골라야한다
-          temp++;
+        if(k[i] != k[j]) {
+          answer++;
         }
       }
+      temp++;
     }
 
     System.out.println(answer);
