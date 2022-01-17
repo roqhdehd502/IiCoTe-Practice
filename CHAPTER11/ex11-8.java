@@ -21,8 +21,13 @@ class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
-    
-    
+    String s = sc.nextLine();
     sc.close();
+
+    char[] arr = new char[s.length()];
+    for(int i=0; i<arr.length; i++) { arr[i] = s.charAt(i); }
+
+    Arrays.sort(arr);
+    for(int i=0; i<arr.length; i++) { System.out.print(arr[i]); }
   }
 }
