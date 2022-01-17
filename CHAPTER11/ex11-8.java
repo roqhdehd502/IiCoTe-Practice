@@ -25,9 +25,27 @@ class Main {
     sc.close();
 
     char[] arr = new char[s.length()];
-    for(int i=0; i<arr.length; i++) { arr[i] = s.charAt(i); }
+    String str = new String[s.length()];
+    int[] num = new int[s.length()];
 
-    Arrays.sort(arr);
-    for(int i=0; i<arr.length; i++) { System.out.print(arr[i]); }
+    String num_ptrn = "^[0-9]*$"; // 숫자 패턴
+    
+
+    for(int i=0; i<arr.length; i++) { 
+      arr[i] = s.charAt(i);
+
+      if() {
+        str[i] = Character.toString(arr[i]);
+      } else if() {
+        
+        num[i] = Character.getNumericValue(arr[i]);
+      }
+    }
+    
+    Arrays.sort(str);
+    Arrays.sort(num); 
+
+    for(int i=0; i<str.length; i++) { System.out.print(str[i]); }
+    for(int i=0; i<num.length; i++) { System.out.print(num[i]); }
   }
 }
