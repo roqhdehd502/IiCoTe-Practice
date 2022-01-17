@@ -21,7 +21,6 @@ class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
-    int cnt = 0; // 시간 카운트
     int n = sc.nextInt(); // 음식의 번호 지정
     int[] food_times = new int[n]; // 각 음식을 모두 먹는 데 필요한 시간이 담겨 있는 배열
 
@@ -33,7 +32,7 @@ class Main {
 
     for(int i=0; i<k; i++) {
       if(i == k-1) {
-        System.out.println(k + "초에서 네트워크 장애가 발생했습니다."
+        System.out.println(k + "초에서 네트워크 장애가 발생했습니다. "
           + (food_times[i%food_times.length]+1) + "번 음식을 섭취해야 할 때 중단되었으므로, 장애 복구 후에 "
           + (food_times[i%food_times.length]+1) + "번 음식부터 다시 먹기 시작하면 됩니다.");
       }
