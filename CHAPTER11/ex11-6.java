@@ -38,7 +38,7 @@ class Main {
           + (food_times[i%food_times.length]+1) + "번 음식부터 다시 먹기 시작하면 됩니다.");
       }
 
-      if([i%food_times.length] > 0) {
+      if(food_times[i%food_times.length] > 0) {
         food_times[i%food_times.length]--;
         System.out.println(i + " ~ " + (i+1) + "초 동안 "
           + (food_times[i%food_times.length]+1) + "번 음식을 섭취한다. 해당 음식 번호의 남은 시간은 "
