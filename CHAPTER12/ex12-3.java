@@ -14,14 +14,19 @@ abcabcdede
 2abcdede => 8 (같은 문자열의 갯수로 자른다)
 */
 
+import java.util.Scanner;
+
 public class Main {
   public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
     int cnt = 0;
     String temp = "";
-    String s = "aabbaccc";
+    String s = sc.nextLine();
+    sc.close();
 
     for(int i=0; i<s.length(); i++) {
-      if(i == s.length()-1) {
+      if(i == s.length()-1) { // 마지막 인덱스
         if(String.valueOf(s.charAt(i)).equals(String.valueOf(s.charAt(i-1)))) {
           cnt++;
           temp += Integer.toString(cnt);
@@ -31,7 +36,7 @@ public class Main {
           temp += String.valueOf(s.charAt(i));
         }
 
-      } else if(i == 0) {
+      } else if(i == 0) { // 첫 번째 인덱스
         cnt++;
 
       } else {
@@ -39,7 +44,7 @@ public class Main {
           cnt++;
         } else {
           cnt++;
-          temp += Integer.toString(cnt);
+          temp += (cnt == 1) ? "" : Integer.toString(cnt); 
           temp += String.valueOf(s.charAt(i));
           cnt = 0;
         }
