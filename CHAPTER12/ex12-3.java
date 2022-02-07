@@ -18,11 +18,11 @@ public class Main {
   public static void main(String[] args) {
     int cnt = 0;
     String temp = "";
-    String s = "aaaabbb"; // => 4a3b(4)
+    String s = "aabbaccc";
 
     for(int i=0; i<s.length(); i++) {
-      if(i >= s.length()-1) {
-        if(s.indexOf(i) == s.indexOf(i-1)) {
+      if(i == s.length()-1) {
+        if(String.valueOf(s.charAt(i)).equals(String.valueOf(s.charAt(i-1)))) {
           cnt++;
           temp += Integer.toString(cnt);
           temp += String.valueOf(s.charAt(i));
@@ -30,15 +30,22 @@ public class Main {
           temp += Integer.toString(cnt);
           temp += String.valueOf(s.charAt(i));
         }
+
+      } else if(i == 0) {
+        cnt++;
+
       } else {
-        if(s.indexOf(i) == s.indexOf(i+1)) {
+        if(String.valueOf(s.charAt(i)).equals(String.valueOf(s.charAt(i+1)))) {
           cnt++;
         } else {
+          cnt++;
           temp += Integer.toString(cnt);
           temp += String.valueOf(s.charAt(i));
           cnt = 0;
         }
       }
+
+      System.out.println(temp);
     }
 
     System.out.println(temp);
