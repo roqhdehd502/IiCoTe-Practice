@@ -46,8 +46,6 @@ public class Main {
           cnt = 0;
         }
       }
-
-      System.out.println(temp);
     }
     System.out.println(temp.length());
   }
