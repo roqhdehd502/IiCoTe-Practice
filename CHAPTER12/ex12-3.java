@@ -52,8 +52,6 @@ public class Main {
 
       System.out.println(temp);
     }
-
-    System.out.println(temp);
     System.out.println(temp.length());
   }
 }
