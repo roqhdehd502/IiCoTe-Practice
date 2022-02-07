@@ -36,9 +36,6 @@ public class Main {
           temp += String.valueOf(s.charAt(i));
         }
 
-      } else if(i == 0) { // 첫 번째 인덱스
-        cnt++;
-
       } else {
         if(String.valueOf(s.charAt(i)).equals(String.valueOf(s.charAt(i+1)))) {
           cnt++;
