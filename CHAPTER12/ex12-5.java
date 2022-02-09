@@ -49,22 +49,26 @@ class Main {
     int idx = 0; // 임시 인덱스
     int rTemp = 0; // 임시 행 인덱스
     int cTemp = 0; // 임시 열 인덱스
-    for(int i=0; i<n*n; i++) { // 지렁이는 11시방향 끝 지점에서 오른쪽 방향으로 처음 이동한다
+    for(int i=0; i<10000; i++) { // 지렁이는 11시방향 끝 지점에서 오른쪽 방향으로 처음 이동한다
       if(rTemp+1 >= n) { // 게임오버 조건(벽에 충돌)
-        
+        time++;
+        break;
       } else if(rTemp-1 <= 0) {
-
+        time++;
+        break;
       } else if(cTemp >= n) {
-
+        time++;
+        break;
       } else if(cTemp <= 0) {
-
+        time++;
+        break;
       }
 
       // if(b[cTemp][rTemp]) { // 게임오버 조건(자기 꼬리와 충돌)
-
+      //  break;
       // }
 
-      if(time >= 1) { // 1초부터 변위가 변하므로...
+      if(time >= 1) { // 1초부터 지렁이의 위치가 변화하므로...
         b[cTemp][rTemp] = 0;
         if(dir == 'E') { // 동쪽으로 이동
           rTemp++;
@@ -110,5 +114,7 @@ class Main {
 
       time++;
     }
+
+    System.out.println(time); // 게임이 끝나는 시간(초)
   }
 }
