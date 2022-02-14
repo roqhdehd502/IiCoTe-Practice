@@ -20,50 +20,90 @@ class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
-    int n = sc.nextInt(); // 크기 입력
-    int m = sc.nextInt(); // 폐업시키지 않을 치킨집의 최대 개수
+    int n = sc.nextInt(); // 거리의 규모 입력(2 <= n <= 50)
+    int m = sc.nextInt(); // 최소한 개업 시켜놓을 치킨집의 개수(1 <= m <= 13)
 
-    ArrayList<Integer> r1 = new ArrayList<>(); // 행
-    ArrayList<Integer> c1 = new ArrayList<>(); // 열
-    ArrayList<Integer> r2 = new ArrayList<>();
-    ArrayList<Integer> c2 = new ArrayList<>();
-
-    int[][] arr = new int[n][n]; // 도시 
+    int hCnt, cCnt; // 집과 치킨집의 개수
+    hCnt = cCnt = 0;
+    int[][] arr = new int[n][n]; // 거리의 집과 치킨집을 입력할 2차원 배열
+    ArrayList<Integer> r1, c1, r2, c2; // 집과 치킨집의 위치(r행과 c열)
+    r1 = c1 = r2 = c2 = new ArrayList<>();
     for(int i=0; i<n; i++) {
       for(int j=0; j<n; j++) {
-        arr[i][j] = sc.nextInt(); // 도시의 정보(0: 빈칸, 1: 집, 2: 치킨집)
-
-        if(arr[i][j] == 1) { // 집
-          r1.add(j+1);
-          c1.add(i+1);
-        } else if(arr[i][j] == 2) { // 치킨 집
-          r2.add(j+1);
-          c2.add(i+1);
+        arr[i][j] = sc.nextInt(); // 집(1 <= x <= 2n), 치킨집(m <= y <= 13)
+        if(arr[i][j] == 2) { // 치킨집(2) 일때 
+          cCnt++;
+          r2.add(i+1);
+          c2.add(j+1); 
+        } else if(arr[i][j] == 1) { // 집(1) 일때
+          hCnt++;
+          r1.add(i+1);
+          c1.add(j+1); 
         }
       }
     }
     sc.close();
 
-    /* ToDo: 치킨집 폐업시키기 */
-    for() { ... }
-
-    /* ToDo: 각 행과 열의 값 간의 거리를 계산 후 최솟값 산출하기 */
-    int temp1 = 0;
-    int temp2 = 0;
-    ArrayList<Integer> cd = new ArrayList<>(); // 치킨 거리 
-    for(int i; i<c2.size(); i++) {
-      for(int j; j<c1.size(); j++) {
-        distance(r1.get(j), r2.get(i), c1.get(j), c2.get(i));
+    int xSum, ySum, cX, cY, temp;
+    xSum = ySum = cX = cY = temp = 0;
+    ArrayList<Integer> cd = new ArrayList<>(); // 치킨 거리
+    
+    if(cCnt > m) { // 치킨집의 수가 m개 보다 많을 때 폐업시키기
+      for(int i=0; i<r1.size(); i++) { // 각 가정집들의 중심 좌표
+        xSum += r1.get(i);
+        ySum += c1.get(i);
       }
-      cd.add(Math.min(temp1, temp2)); // 해당 최솟값을 산출(치킨 거리)
+      cX = xSum / hCnt ; // 중심 좌표 x값
+      cY = ySum / hCnt ; // 중심 좌표 y값
+
+      while(true) { // 치킨집이 m개가 될 때까지 순위를 매겨 미달된 곳은 폐업시키기
+        int[] rank = new int[r2.size()];
+        double[] score = new double[r2.size()];
+
+        for(int i=0; i<r2.size(); i++) { score[i] = edistance(cX, cY, r2.get(i), c2.get(i)); }
+
+        for(int i=0; i<score.length; i++){ // 각 거리별로 순위를 매긴다(최소 거리일수록 1위)
+          rank[i] = 1;
+          for (int j=0; j<score.length; j++) { if(score[i] > score[j]){ rank[i]++; } }          
+        }
+
+        for(int i=0; i<score.length; i++) {
+          if(rank[i] < m) { // 해당 랭크가 m위 미만이면 해당 인덱스의 치킨집을 삭제한다
+            r2.remove(i);
+            c2.remove(i);
+            break;
+          }
+        }
+
+        if(r2.size() ==  m) { break; }
+      }
+      for(int i=0; i<r1.size(); i++) {
+        for(int j=0; j<r2.size(); j++) {
+          temp = Math.min(temp, cdistance(r1.get(i), c1.get(i), r2.get(j), c2.get(j)));
+        }
+        cd.add(temp);
+      }
+    } else { // 치킨집의 수가 m개일때 그대로 치킨 거리 계산(어처피 최소거리만 구해도 되므로...)
+      for(int i=0; i<r1.size(); i++) {
+        for(int j=0; j<r2.size(); j++) {
+          temp = Math.min(temp, cdistance(r1.get(i), c1.get(i), r2.get(j), c2.get(j)));
+        }
+        cd.add(temp);
+      }
     }
 
-    int sum = 0;
-    for(int i : cd) { sum += cd; } // 도시의 치킨 거리
-    System.out.println(sum); // 결과값 출력
+    int ccd = 0; // 도시의 치킨 거리의 최솟값
+    for(int i=0; i<cd.size(); i++) { ccd += cd.get(i); }
+    System.out.println(ccd); // 결과값 출력
   }
-  
-  private static int distance(int r1, int r2, int c1, int c2) {
+
+
+  private static double edistance(int x1, int y1, int x2, int y2) { // 유클리드 거리
+    return Math.sqrt(Math.pow((x2-x1), 2) + Math.pow((y2-y1), 2));  
+  }
+
+
+  private static int cdistance(int r1, int c1, int r2, int c2) { // 치킨 거리
     return Math.abs(r1-r2) + Math.abs(c1-c2);
   }
 }
