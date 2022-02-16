@@ -23,6 +23,15 @@
 3
 */
 
+/**
+BFS 알고리즘 문제이다.
+선입선출의 형태를 가진 Queue를 이용해서 X번 노드부터 시작해 인접 노드가 존재할 때 Enqueue한 뒤 해당 인접노드로 이동한다.
+더이상 인접노드가 존재하지 않을 경우 해당 Queue의 사이즈가 K를 만족하면 해당 노드 번호를 추가.
+더이상 인접노드가 존재하지 않을 경우 해당 Queue의 사이즈가 K를 만족하지 않으면 다시 Dequeue하여 X번 노드로 돌아간다.
+
+단, 모든 노드를 탐색하였음에도 K를 만족하는 노드 번호가 나오지 않으면 해당 결과값을 -1로 출력한다.
+*/
+
 import java.util.Scanner;
 import java.util.LinkedList;
 import java.util.Queue;
