@@ -33,151 +33,149 @@ class Main {
     int dtemp = div;
     int max = 0; // 최대값
     int min = 0; // 최소값
-    int i=n-1;
+    int i=0;
     
-    /* ToDo: 최대값을 내기 위해선 적어도 큰 수끼리 곱하기를 시켜야한다(곱, 덧, 뺄, 나) */
-    while(i != 0) {
-      while(ttemp != 0) { // 곱셈
-        if(i <= 0) {
-          max *= seq[0];
-          ttemp--;
-          System.out.println("times:" + max);
-        } else if(i >= 1) {
-          temp = seq[i] * seq[i-1];
+    while(i != n-1) {
+      while(dtemp != 0) { // 나눗셈
+        if(i == n-1) {
+          max /= seq[n-1];
+          dtemp--;
+          System.out.println("div:" + max);
+        } else if(i >= 0) {
+          temp = seq[i] / seq[i+1];
           max += temp;
-          ttemp--;
-          if(i-1 != 0) { 
-            i = i-2; 
-          } else if(i-1 == 0) {
-            i--;
+          dtemp--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
           }
-          System.out.println("times:" + max);
+          System.out.println("div:" + max);
         }
       }
       while(ptemp != 0) { // 덧셈
-        if(i <= 0) {
-          max += seq[0];
+        if(i == n-1) {
+          max += seq[n-1];
           ptemp--;
           System.out.println("plus:" + max);
-        } else if(i >= 1) {
-          temp = seq[i] + seq[i-1];
+        } else if(i >= 0) {
+          temp = seq[i] + seq[i+1];
           max += temp;
           ptemp--;
-          if(i-1 != 0) { 
-            i = i-2; 
-          } else if(i-1 == 0) {
-            i--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
           }
           System.out.println("plus:" + max);
         }
       }
       while(mtemp != 0) { // 뺄셈
-        if(i <= 0) {
-          max -= seq[0];
+        if(i == n-1) {
+          max -= seq[n-1];
           mtemp--;
           System.out.println("minus:" + max);
-        } else if(i >= 1) {
-          temp = seq[i] - seq[i-1];
+        } else if(i >= 0) {
+          temp = seq[i] - seq[i+1];
           max += temp;
           mtemp--;
-          if(i-1 != 0) { 
-            i = i-2; 
-          } else if(i-1 == 0) {
-            i--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
           }
           System.out.println("minus:" + max);
         }
       }
-      while(dtemp != 0) { // 나눗셈
-        if(i <= 0) {
-          max /= seq[0];
-          dtemp--;
-          System.out.println("div:" + max);
-        } else if(i >= 1) {
-          temp = seq[i] / seq[i-1];
+      while(ttemp != 0) { // 곱셈
+        if(i == n-1) {
+          max *= seq[n-1];
+          ttemp--;
+          System.out.println("times:" + max);
+        } else if(i >= 0) {
+          temp = seq[i] * seq[i+1];
           max += temp;
-          dtemp--;
-          if(i-1 != 0) { 
-            i = i-2; 
-          } else if(i-1 == 0) {
-            i--;
+          ttemp--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
           }
-          System.out.println("div:" + max);
+          System.out.println("times:" + max);
         }
       }
     }    
     
-    i=n-1;
+    i=0;
     System.out.println("==========================================");
 
-    /* ToDo: 최소값을 내기 위해선 적어도 큰 수끼리 나눗셈을 시켜야한다(나, 뺄, 덧, 곱) */
-    while(i != 0) {
-      while(div != 0) { // 나눗셈
-        if(i <= 0) {
-          min /= seq[0];
-          div--;
-          System.out.println("div:" + min);
-        } else if(i >= 1) {
-          temp = seq[i] / seq[i-1];
+    while(i != n-1) {
+      while(plus != 0) { // 덧셈
+        if(i == n-1) {
+          min += seq[n-1];
+          plus--;
+          System.out.println("plus:" + min);
+        } else if(i >= 0) {
+          temp = seq[i] + seq[i+1];
           min += temp;
-          div--;
-          if(i-1 != 0) { 
-            i = i-2; 
-          } else if(i-1 == 0) {
-            i--;
+          plus--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
           }
-          System.out.println("div:" + min);
+          System.out.println("plus:" + min);
         }
       }
       while(minus != 0) { // 뺄셈
-        if(i <= 0) {
-          min -= seq[0];
+        if(i == n-1) {
+          min -= seq[n-1];
           minus--;
           System.out.println("minus:" + min);
-        } else if(i >= 1) {
-          temp = seq[i] - seq[i-1];
+        } else if(i >= 0) {
+          temp = seq[i] - seq[i+1];
           min += temp;
           minus--;
-          if(i-1 != 0) { 
-            i = i-2; 
-          } else if(i-1 == 0) {
-            i--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
           }
           System.out.println("minus:" + min);
-        }
-      }
-      while(plus != 0) { // 덧셈
-        if(i <= 0) {
-          min += seq[0];
-          plus--;
-          System.out.println("plus:" + min);
-        } else if(i >= 1) {
-          temp = seq[i] + seq[i-1];
-          min += temp;
-          plus--;
-          if(i-1 != 0) { 
-            i = i-2; 
-          } else if(i-1 == 0) {
-            i--;
-          }
-          System.out.println("plus:" + min);
         }
       }
       while(times != 0) { // 곱하기
-        if(i <= 0) {
-          min *= seq[0];
+        if(i == n-1) {
+          min *= seq[n-1];
           times--;
           System.out.println("times:" + min);
-        } else if(i >= 1) {
-          temp = seq[i] * seq[i-1];
+        } else if(i >= 0) {
+          temp = seq[i] * seq[i+1];
           min += temp;
           times--;
-          if(i-1 != 0) { 
-            i = i-2; 
-          } else if(i-1 == 0) {
-            i--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
           }
           System.out.println("times:" + min);
+        }
+      }
+      while(div != 0) { // 나눗셈
+        if(i == n-1) {
+          min /= seq[n-1];
+          div--;
+          System.out.println("div:" + min);
+        } else if(i >= 0) {
+          temp = seq[i] / seq[i+1];
+          min += temp;
+          div--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
+          }
+          System.out.println("div:" + min);
         }
       }
     }
