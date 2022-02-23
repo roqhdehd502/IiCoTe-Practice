@@ -1,2 +1,24 @@
 # IiCoTe-Practice
 나동빈 저 이것이 코딩 테스트다의 실습 자료물입니다.
+
+# CHAPTER 03
+
+# CHAPTER 04
+
+# CHAPTER 05
+
+# CHAPTER 06
+
+# CHAPTER 07
+
+# CHAPTER 08
+
+# CHAPTER 09
+
+# CHAPTER 10
+
+# CHAPTER 11
+
+# CHAPTER 12
+
+# CHAPTER 13
