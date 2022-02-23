@@ -2,13 +2,13 @@
 14-05. 연산자 끼워 넣기
 
 === 입력 예시 ===
-2
-5 6
-0 0 1 0
+6
+1 2 3 4 5 6
+2 1 1 1
 
 === 출력 예시 ===
-30
-30
+54 (1 - 2 / 3 + 4 + 5 * 6)
+-24 (1 + 2 + 3 - 4 * 5 / 6)
 */
 
 import java.util.*;
@@ -36,6 +36,23 @@ class Main {
     int i=0;
     
     while(i != n-1) {
+      while(mtemp != 0) { // 뺄셈
+        if(i == n-1) {
+          max -= seq[n-1];
+          mtemp--;
+          System.out.println("minus:" + max);
+        } else if(i >= 0) {
+          temp = seq[i] - seq[i+1];
+          max += temp;
+          mtemp--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
+          }
+          System.out.println("minus:" + max);
+        }
+      }
       while(dtemp != 0) { // 나눗셈
         if(i == n-1) {
           max /= seq[n-1];
@@ -52,7 +69,7 @@ class Main {
           }
           System.out.println("div:" + max);
         }
-      }
+      }  
       while(ptemp != 0) { // 덧셈
         if(i == n-1) {
           max += seq[n-1];
@@ -68,23 +85,6 @@ class Main {
             i++;
           }
           System.out.println("plus:" + max);
-        }
-      }
-      while(mtemp != 0) { // 뺄셈
-        if(i == n-1) {
-          max -= seq[n-1];
-          mtemp--;
-          System.out.println("minus:" + max);
-        } else if(i >= 0) {
-          temp = seq[i] - seq[i+1];
-          max += temp;
-          mtemp--;
-          if(i+1 != n-1) { 
-            i = i+2; 
-          } else if(i+1 == n-1) {
-            i++;
-          }
-          System.out.println("minus:" + max);
         }
       }
       while(ttemp != 0) { // 곱셈
@@ -110,6 +110,23 @@ class Main {
     System.out.println("==========================================");
 
     while(i != n-1) {
+      while(times != 0) { // 곱하기
+        if(i == n-1) {
+          min *= seq[n-1];
+          times--;
+          System.out.println("times:" + min);
+        } else if(i >= 0) {
+          temp = seq[i] * seq[i+1];
+          min += temp;
+          times--;
+          if(i+1 != n-1) { 
+            i = i+2; 
+          } else if(i+1 == n-1) {
+            i++;
+          }
+          System.out.println("times:" + min);
+        }
+      }
       while(plus != 0) { // 덧셈
         if(i == n-1) {
           min += seq[n-1];
@@ -142,23 +159,6 @@ class Main {
             i++;
           }
           System.out.println("minus:" + min);
-        }
-      }
-      while(times != 0) { // 곱하기
-        if(i == n-1) {
-          min *= seq[n-1];
-          times--;
-          System.out.println("times:" + min);
-        } else if(i >= 0) {
-          temp = seq[i] * seq[i+1];
-          min += temp;
-          times--;
-          if(i+1 != n-1) { 
-            i = i+2; 
-          } else if(i+1 == n-1) {
-            i++;
-          }
-          System.out.println("times:" + min);
         }
       }
       while(div != 0) { // 나눗셈
