@@ -26,22 +26,171 @@ class Main {
     int div = sc.nextInt(); // 나눗셈의 개수
     sc.close();
 
+    int temp = 0;
+    int ptemp = plus;
+    int mtemp = minus;
+    int ttemp = times;
+    int dtemp = div;
     int max = 0; // 최대값
     int min = 0; // 최소값
-    int xtemp = 0;
-    int ntemp = 0;
-    /* ToDo: 최대값을 내기 위해선 적어도 큰 수끼리 곱하기를 시켜야한다 */
+    int i=n-1;
     
+    /* ToDo: 최대값을 내기 위해선 적어도 큰 수끼리 곱하기를 시켜야한다(곱, 덧, 뺄, 나) */
+    while(i != 0) {
+      while(ttemp != 0) { // 곱셈
+        if(i <= 0) {
+          temp *= seq[0];
+          max += temp;
+          ttemp--;
+          System.out.println("times:" + max);
+        } else if(i >= 1) {
+          temp = seq[i] * seq[i-1];
+          max += temp;
+          ttemp--;
+          if(i-1 != 0) { 
+            i = i-2; 
+          } else if(i-1 == 0) {
+            i--;
+          }
+          System.out.println("times:" + max);
+        }
+      }
+      while(ptemp != 0) { // 덧셈
+        if(i <= 0) {
+          temp += seq[0];
+          max += temp;
+          ptemp--;
+          System.out.println("plus:" + max);
+        } else if(i >= 1) {
+          temp = seq[i] + seq[i-1];
+          max += temp;
+          ptemp--;
+          if(i-1 != 0) { 
+            i = i-2; 
+          } else if(i-1 == 0) {
+            i--;
+          }
+          System.out.println("plus:" + max);
+        }
+      }
+      while(mtemp != 0) { // 뺄셈
+        if(i <= 0) {
+          temp -= seq[0];
+          max += temp;
+          mtemp--;
+          System.out.println("minus:" + max);
+        } else if(i >= 1) {
+          temp = seq[i] - seq[i-1];
+          max += temp;
+          mtemp--;
+          if(i-1 != 0) { 
+            i = i-2; 
+          } else if(i-1 == 0) {
+            i--;
+          }
+          System.out.println("minus:" + max);
+        }
+      }
+      while(dtemp != 0) { // 나눗셈
+        if(i <= 0) {
+          temp /= seq[0];
+          max += temp;
+          dtemp--;
+          System.out.println("div:" + max);
+        } else if(i >= 1) {
+          temp = seq[i] / seq[i-1];
+          max += temp;
+          dtemp--;
+          if(i-1 != 0) { 
+            i = i-2; 
+          } else if(i-1 == 0) {
+            i--;
+          }
+          System.out.println("div:" + max);
+        }
+      }
+    }    
     
-    max = Math.max(max, xtemp); 
+    i=n-1;
+    System.out.println("==========================================");
 
-    /* ToDo: 최소값을 내기 위해선 적어도 큰 수끼리 나눗셈을 시켜야한다 */
-    min = Math.min(min, ntemp); 
-
-    /**
-     최대값과 최소값이 항상 -10억보다 크거나 같고, 10억보다 작거나 같은 결과가 나오는 입력만 주어진다. 또한 앞에서부터 계산했을 떄, 중간에 계산되는 식의 결과도 항상 -10억보다 크거나 같고, 10억보다 작거나 같다.
-    */
-    System.out.println(); // 만들 수 있는 결과 식의 최대값
-    System.out.println(); // 만들 수 있는 결과 식의 최소값
+    /* ToDo: 최소값을 내기 위해선 적어도 큰 수끼리 나눗셈을 시켜야한다(나, 뺄, 덧, 곱) */
+    while(i != 0) {
+      while(div != 0) { // 나눗셈
+        if(i <= 0) {
+          temp /= seq[0];
+          min += temp;
+          div--;
+          System.out.println("div:" + min);
+        } else if(i >= 1) {
+          temp = seq[i] / seq[i-1];
+          min += temp;
+          div--;
+          if(i-1 != 0) { 
+            i = i-2; 
+          } else if(i-1 == 0) {
+            i--;
+          }
+          System.out.println("div:" + min);
+        }
+      }
+      while(minus != 0) { // 뺄셈
+        if(i <= 0) {
+          temp -= seq[0];
+          min += temp;
+          minus--;
+          System.out.println("minus:" + min);
+        } else if(i >= 1) {
+          temp = seq[i] - seq[i-1];
+          min += temp;
+          minus--;
+          if(i-1 != 0) { 
+            i = i-2; 
+          } else if(i-1 == 0) {
+            i--;
+          }
+          System.out.println("minus:" + min);
+        }
+      }
+      while(plus != 0) { // 덧셈
+        if(i <= 0) {
+          temp += seq[0];
+          min += temp;
+          plus--;
+          System.out.println("plus:" + min);
+        } else if(i >= 1) {
+          temp = seq[i] + seq[i-1];
+          min += temp;
+          plus--;
+          if(i-1 != 0) { 
+            i = i-2; 
+          } else if(i-1 == 0) {
+            i--;
+          }
+          System.out.println("plus:" + min);
+        }
+      }
+      while(times != 0) { // 곱하기
+        if(i <= 0) {
+          temp *= seq[0];
+          min += temp;
+          times--;
+          System.out.println("times:" + min);
+        } else if(i >= 1) {
+          temp = seq[i] * seq[i-1];
+          min += temp;
+          times--;
+          if(i-1 != 0) { 
+            i = i-2; 
+          } else if(i-1 == 0) {
+            i--;
+          }
+          System.out.println("times:" + min);
+        }
+      }
+    }
+    
+    System.out.println(max); // 만들 수 있는 결과 식의 최대값
+    System.out.println(min); // 만들 수 있는 결과 식의 최소값
   }
 }
