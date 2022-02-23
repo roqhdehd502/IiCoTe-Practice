@@ -39,8 +39,7 @@ class Main {
     while(i != 0) {
       while(ttemp != 0) { // 곱셈
         if(i <= 0) {
-          temp *= seq[0];
-          max += temp;
+          max *= seq[0];
           ttemp--;
           System.out.println("times:" + max);
         } else if(i >= 1) {
@@ -57,8 +56,7 @@ class Main {
       }
       while(ptemp != 0) { // 덧셈
         if(i <= 0) {
-          temp += seq[0];
-          max += temp;
+          max += seq[0];
           ptemp--;
           System.out.println("plus:" + max);
         } else if(i >= 1) {
@@ -75,8 +73,7 @@ class Main {
       }
       while(mtemp != 0) { // 뺄셈
         if(i <= 0) {
-          temp -= seq[0];
-          max += temp;
+          max -= seq[0];
           mtemp--;
           System.out.println("minus:" + max);
         } else if(i >= 1) {
@@ -93,8 +90,7 @@ class Main {
       }
       while(dtemp != 0) { // 나눗셈
         if(i <= 0) {
-          temp /= seq[0];
-          max += temp;
+          max /= seq[0];
           dtemp--;
           System.out.println("div:" + max);
         } else if(i >= 1) {
@@ -118,8 +114,7 @@ class Main {
     while(i != 0) {
       while(div != 0) { // 나눗셈
         if(i <= 0) {
-          temp /= seq[0];
-          min += temp;
+          min /= seq[0];
           div--;
           System.out.println("div:" + min);
         } else if(i >= 1) {
@@ -136,8 +131,7 @@ class Main {
       }
       while(minus != 0) { // 뺄셈
         if(i <= 0) {
-          temp -= seq[0];
-          min += temp;
+          min -= seq[0];
           minus--;
           System.out.println("minus:" + min);
         } else if(i >= 1) {
@@ -154,8 +148,7 @@ class Main {
       }
       while(plus != 0) { // 덧셈
         if(i <= 0) {
-          temp += seq[0];
-          min += temp;
+          min += seq[0];
           plus--;
           System.out.println("plus:" + min);
         } else if(i >= 1) {
@@ -172,8 +165,7 @@ class Main {
       }
       while(times != 0) { // 곱하기
         if(i <= 0) {
-          temp *= seq[0];
-          min += temp;
+          min *= seq[0];
           times--;
           System.out.println("times:" + min);
         } else if(i >= 1) {
