@@ -28,36 +28,40 @@ class Main {
       sc.nextLine();
     }
 
+    int[][] find  = new int[n][n]; // 발각 직전 좌표
+    /* ToDo: 발각 직전 서로 겹치는 좌표가 있을 것이다 이 경우 우선적으로 장애물을 세운다 */
+    for(int i=0; i<n; i++) { // 선생님의 학생 감시
+      for(int j=0; j<n; j++) {
+        if(arr[i][j] == 'T') { 
+          if(nMntrng(arr, i, j) != -1) {
+            find[i][j]++; // 카운팅
+          }
+          if(sMntrng(arr, n, i, j) != -1) {
+            find[i][j]++;
+          }
+          if(wMntrng(arr, i, j) != -1) {
+            find[i][j]++;
+          }
+          if(eMntrng(arr, n, i, j) != -1) {
+            find[i][j]++;
+          }
+        }
+      }
+    }
+
     ArrayList<ArrayList<Integer>> obst = new ArrayList<ArrayList<Integer>>(); // 장애물을 세우기 위한 배열
     ArrayList<Integer> nobst = new ArrayList<Integer>();
     ArrayList<Integer> sobst = new ArrayList<Integer>();
     ArrayList<Integer> wobst = new ArrayList<Integer>();
     ArrayList<Integer> eobst = new ArrayList<Integer>();
-    
-    for(int i=0; i<n; i++) { // 선생님의 학생 감시
-      for(int j=0; j<n; j++) {
-        if(arr[i][j] == 'T') {
 
-          nobst.add(arr[nMntrng(arr, i, j)][j]);
-          obst.add(nobst);
-
-          sobst.add(arr[sMntrng(arr, n, i, j)][j]);
-          obst.add(sobst);
-
-          wobst.add(arr[i][wMntrng(arr, i, j)]);
-          obst.add(wobst);
-
-          eobst.add(arr[i][eMntrng(arr, n, i, j)]);
-          obst.add(eobst);
-        }
-      }
-    }
+    /* ToDo: 장애물을 3개 세울때 학생이 발각되지 않는 여부를 리턴한다 */
   }
     
 
   /* 감시 알고리즘을 체스의 룩 처럼 구현하여 발각 직전 지점을 리턴한다 */
   private static int nMntrng(char[][] arr, int i, int j) { // 북쪽으로
-    int loc = 0;
+    int loc = -1;
     for(int v=i; v>=0; v--) {
       if(arr[v][j] == 'S') {
         loc = v+1;
@@ -67,7 +71,7 @@ class Main {
     return loc;    
   }
   private static int sMntrng(char[][] arr, int n, int i, int j) { // 남쪽으로
-    int loc = 0;
+    int loc = -1;
     for(int v=i; v<n; v++) {
       if(arr[v][j] == 'S') {
         loc = v-1;
@@ -77,7 +81,7 @@ class Main {
     return loc;
   }
   private static int wMntrng(char[][] arr, int i, int j) { // 서쪽으로
-    int loc = 0;
+    int loc = -1;
     for(int h=i; h>=0; h--) {
       if(arr[i][h] == 'S') {
         loc = h+1;
@@ -87,7 +91,7 @@ class Main {
     return loc;
   }
   private static int eMntrng(char[][] arr, int n, int i, int j) { // 동쪽으로
-    int loc = 0;
+    int loc = -1;
     for(int h=i; h<n; h++) {
       if(arr[i][h] == 'S') {
         loc = h-1;
