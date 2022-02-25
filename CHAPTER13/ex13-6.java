@@ -17,6 +17,7 @@ import java.util.*;
 
 class Main {
   public static void main(String[] args) {
+    /* === 입력값 설정 === */
     Scanner sc = new Scanner(System.in);
 
     int n = sc.nextInt(); // 크기 설정
@@ -27,9 +28,11 @@ class Main {
       }
       sc.nextLine();
     }
+    sc.close();
+    /* ================== */
 
+    /* === 발각 시점 및 발각 직전 좌표 설정 === */
     int[][] find  = new int[n][n]; // 발각 직전 좌표
-    /* ToDo: 발각 직전 서로 겹치는 좌표가 있을 것이다 이 경우 우선적으로 장애물을 세운다 */
     for(int i=0; i<n; i++) { // 선생님의 학생 감시
       for(int j=0; j<n; j++) {
         if(arr[i][j] == 'T') { 
@@ -48,7 +51,9 @@ class Main {
         }
       }
     }
+    /* ==================================== */
 
+    /* === 발각 직전 좌표 값을 통한 장애물 세우기 === */
     ArrayList<ArrayList<Integer>> obst = new ArrayList<ArrayList<Integer>>(); // 장애물을 세우기 위한 배열
     ArrayList<Integer> nobst = new ArrayList<Integer>();
     ArrayList<Integer> sobst = new ArrayList<Integer>();
@@ -56,6 +61,11 @@ class Main {
     ArrayList<Integer> eobst = new ArrayList<Integer>();
 
     /* ToDo: 장애물을 3개 세울때 학생이 발각되지 않는 여부를 리턴한다 */
+    /* ========================================= */
+    
+    /* === 결과값 출력 === */
+    
+    /* ================== */
   }
     
 
