@@ -5,7 +5,7 @@
 
 <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER04"># CHAPTER 04</a>
 
-<a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER05"># CHAPTER 05/a>
+<a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER05"># CHAPTER 05</a>
 
 <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER06"># CHAPTER 06</a>
 
