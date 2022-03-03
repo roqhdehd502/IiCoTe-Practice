@@ -66,7 +66,6 @@ public class Dohyun implements Comparable<Dohyun> {
   }
 }
 
-
 public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
@@ -77,19 +76,21 @@ public class Main {
     int kor = 0;
     int eng = 0;
     int mat = 0;
-    Dohyun dohyun;
+    ArrayList<Dohyun> dohyun = new ArrayList<>;
     
     for(int i=0; i<n; i++) {
       name = sc.next();
       kor = sc.nextInt();
       eng = sc.nextInt();
       mat = sc.nextInt();
-      dohyun = new Dohyun(name, kor, eng, mat);
-      
+      dohyun.add(new Dohyun(name, kor, eng, mat));
     }
     sc.close();
 
-		Collections.sort(dohyun);
+    Collections.sort(dohyun);
+    for(int i=0; i<n; i++) {
+      System.out.println(dohyun.get(i).getName());
+    }
   }
 }
 
