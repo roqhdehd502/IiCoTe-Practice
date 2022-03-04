@@ -23,9 +23,8 @@
 
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER13">CHAPTER 13. DFS/BFS 문제</a>
 
-<!--
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER14">CHAPTER 14. 정렬 문제</a>
-
+<!--
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER15">CHAPTER 15. 이진 탐색 문제</a>
 
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER16">CHAPTER 16. 다이나믹 프로그래밍 문제</a>
