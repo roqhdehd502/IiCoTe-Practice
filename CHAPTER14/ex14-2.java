@@ -42,9 +42,6 @@ class Main {
     entryList.sort(Map.Entry.comparingByValue());
 
     // 결과값 출력
-    for(Map.Entry<Integer, Integer> entry : entryList){
-      System.out.println(entry.getKey());
-      break;      
-    }
+    System.out.println(entry.get(0));
   }
 }
