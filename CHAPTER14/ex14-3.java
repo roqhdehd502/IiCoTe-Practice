@@ -54,6 +54,6 @@ class Main {
     Collections.sort(keySetList, (o1, o2) -> (failRate.get(o2).compareTo(failRate.get(o1))));
 
     // 결과값 출력 
-	  for(Integer key : keySetList) { System.out.print(key + " "); }
+    for(Integer key : keySetList) { System.out.print(key + " "); }
   }
 }
