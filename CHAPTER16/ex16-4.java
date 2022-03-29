@@ -17,18 +17,14 @@ class Main {
 
     int n = sc.nextInt();
 
-    int temp = 0;
-    ArrayList<Integer> sldr = new ArrayList<>();
-    for(int i=1; i<=n; i++) {
-      temp = sc.nextInt();
-      sldr.add(temp);
-    }
+    int[] sldr = new int[n];
+    for(int i=0; i<sldr.length; i++) { sldr[i] = sc.nextInt(); }
     sc.close();
 
     int cnt = 0;
-    for(int i=0; i<sldr.size(); i++) {
-      if(i == sldr.size()-1) { continue; }
-      if(sldr.get(i) < sldr.get(i+1)) { cnt++; }
+    for(int i=0; i<sldr.length; i++) {
+      if(i == sldr.length-1) { continue; }
+      if(sldr[i] < sldr[i+1]) { cnt++; }
     }
 
     System.out.println(cnt);
