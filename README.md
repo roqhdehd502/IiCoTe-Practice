@@ -26,11 +26,11 @@
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER14">CHAPTER 14. 정렬 문제</a>
 
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER15">CHAPTER 15. 이진 탐색 문제</a>
-<!--
+
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER16">CHAPTER 16. 다이나믹 프로그래밍 문제</a>
 
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER17">CHAPTER 17. 최단 경로 문제</a>
-
+<!--
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER18">CHAPTER 18. 그래프 이론 문제</a>
 
 # <a href="https://github.com/roqhdehd502/IiCoTe-Practice/tree/main/CHAPTER19">CHAPTER 19. 2020년 상반기 삼성전자 기출문제</a>
